@@ -1,4 +1,4 @@
-== PushVendor
+# PushVendor
 
 PushVendor is an open source point of sale system built with Ruby on Rails and Twitter Bootstrap. This was originally a prototype for a commercial offering that never materialized. I'm in the process of cleaning it up and adding tests. Pull requests welcome.
 
