@@ -1,8 +1,12 @@
 == PushVendor
 
-PushVendor is an open source point of sale system built with Ruby on Rails and Twitter Bootstrap. The system is free of charge to use because I believe that the overhead for business software is too high for many small businesses. Getting a small business up and running should not cost so much.
+PushVendor is an open source point of sale system built with Ruby on Rails and Twitter Bootstrap.
 
 --------
+
+bundle exec guard
+
+localhost:3000/
 
 Default Credentials: admin, password
 
@@ -14,7 +18,7 @@ ____________________________________________________
 
 The MIT License (MIT)
 
-Copyright (c) 2014 PushVendor
+Copyright (c) 2014,2016 Hunt Burdick
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

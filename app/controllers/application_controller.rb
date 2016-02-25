@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
 
   private
 
+  ##
+  # set_configurations loads the global store configurations.
   def set_configurations
     @configurations = StoreConfiguration.find(1)
   end

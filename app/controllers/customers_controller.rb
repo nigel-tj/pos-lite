@@ -22,10 +22,8 @@ class CustomersController < ApplicationController
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @customer }
       else
         format.html { render action: 'new' }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -34,10 +32,8 @@ class CustomersController < ApplicationController
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,7 +44,6 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to customers_url }
-      format.json { head :no_content }
     end
   end
 
