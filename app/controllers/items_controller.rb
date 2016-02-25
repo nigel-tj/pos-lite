@@ -31,7 +31,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
@@ -54,27 +53,27 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items =  Item.all.where('name ILIKE ?', "%#{params[:search][:item_name]}%")
+    @items = Item.all.where('name ILIKE ?', "%#{params[:search][:item_name]}%")
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = Item.find(params[:id])
-      @categories = ItemCategory.find(:all)
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def item_params
-      params.require(:item).permit(:image_url,
-                                   :sku,
-                                   :name,
-                                   :description,
-                                   :price,
-                                   :stock_amount,
-                                   :cost_price,
-                                   :item_category_id,
-                                   :published)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_item
+    @item = Item.find(params[:id])
+    @categories = ItemCategory.all
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def item_params
+    params.require(:item).permit(:image_url,
+                                 :sku,
+                                 :name,
+                                 :description,
+                                 :price,
+                                 :stock_amount,
+                                 :cost_price,
+                                 :item_category_id,
+                                 :published)
+  end
 end

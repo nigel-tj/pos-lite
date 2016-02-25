@@ -31,5 +31,4 @@ class DashboardController < ApplicationController
       return @configurations.tax_rate.to_f * 0.01
     end
   end
-
 end
