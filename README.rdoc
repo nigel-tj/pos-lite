@@ -1,6 +1,6 @@
 == PushVendor
 
-This is an early prototype of the PushVendor system. The proprietary PushVendor system is an entirely new code base but it is based off many of the concepts learned here. There are some bugs and some things that could be done a little better in this prototype but it is generally stable.
+PushVendor is an open source point of sale system built with Ruby on Rails and Twitter Bootstrap. The system is free of charge to use because I believe that the overhead for business software is too high for many small businesses. Getting a small business up and running should not cost so much.
 
 --------
 

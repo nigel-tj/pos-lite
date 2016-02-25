@@ -1,29 +1,21 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
-  # GET /customers
-  # GET /customers.json
   def index
-    @customers = Customer.paginate(:page => params[:page], :per_page => 20).where(:published => true)
+    @customers = Customer.paginate(page: params[:page], per_page: 20).where(published: true)
   end
 
-  # GET /customers/1
-  # GET /customers/1.json
-  def show
-  end
-
-  # GET /customers/new
   def new
     @customer = Customer.new
   end
 
-  # GET /customers/1/edit
+  def show
+  end
+
   def edit
     @customer = Customer.find(params[:id])
   end
 
-  # POST /customers
-  # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
 
@@ -38,8 +30,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /customers/1
-  # PATCH/PUT /customers/1.json
   def update
     respond_to do |format|
       if @customer.update(customer_params)
@@ -52,8 +42,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  # DELETE /customers/1
-  # DELETE /customers/1.json
   def destroy
     @customer.published = false
     @customer.save
@@ -65,13 +53,22 @@ class CustomersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_customer
-      @customer = Customer.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :phone_number, :email_address, :address, :city, :state, :zip, :published)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def customer_params
+    params.require(:customer).permit(:first_name,
+                                     :last_name,
+                                     :phone_number,
+                                     :email_address,
+                                     :address,
+                                     :city,
+                                     :state,
+                                     :zip,
+                                     :published)
+  end
 end

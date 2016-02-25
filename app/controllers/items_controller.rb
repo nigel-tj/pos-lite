@@ -1,30 +1,20 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-  # GET /items
-  # GET /items.json
   def index
-    @items = Item.paginate(:page => params[:page], :per_page => 20).where(:published => true)
+    @items = Item.paginate(page: params[:page], per_page: 20).where(published: true)
   end
 
-  # GET /items/1
-  # GET /items/1.json
-  def show
-    set_item
-  end
-
-  # GET /items/new
   def new
     @item = Item.new
   end
 
-  # GET /items/1/edit
-  def edit
-    set_item
+  def show
   end
 
-  # POST /items
-  # POST /items.json
+  def edit
+  end
+
   def create
     @item = Item.new(item_params)
     @item.published = true
@@ -40,8 +30,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
   def update
 
     respond_to do |format|
@@ -55,8 +43,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # DELETE /items/1
-  # DELETE /items/1.json
   def destroy
     @item.published = false
     @item.save
@@ -68,8 +54,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    # @items =  Item.where(["name LIKE :tag", {:tag => params[:search][:item_name]}])
-    @items =  Item.find(:all, :conditions => ['name LIKE ?', "%#{params[:search][:item_name]}%"])
+    @items =  Item.all.where('name ILIKE ?', "%#{params[:search][:item_name]}%")
   end
 
 
@@ -82,6 +67,14 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:image_url, :sku, :name, :description, :price, :stock_amount, :cost_price, :item_category_id, :published)
+      params.require(:item).permit(:image_url,
+                                   :sku,
+                                   :name,
+                                   :description,
+                                   :price,
+                                   :stock_amount,
+                                   :cost_price,
+                                   :item_category_id,
+                                   :published)
     end
 end

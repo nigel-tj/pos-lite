@@ -13,7 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20140420165735) do
 
-  create_table "customers", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "customers", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email_address"
@@ -27,14 +30,14 @@ ActiveRecord::Schema.define(version: 20140420165735) do
     t.datetime "updated_at"
   end
 
-  create_table "item_categories", force: true do |t|
+  create_table "item_categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "items", force: true do |t|
+  create_table "items", force: :cascade do |t|
     t.string   "sku"
     t.string   "name"
     t.text     "description"
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140420165735) do
     t.integer  "item_category_id"
   end
 
-  create_table "line_items", force: true do |t|
+  create_table "line_items", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "quantity",                            default: 1
     t.decimal  "price",       precision: 8, scale: 2
@@ -58,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140420165735) do
     t.datetime "updated_at"
   end
 
-  create_table "payments", force: true do |t|
+  create_table "payments", force: :cascade do |t|
     t.integer  "sale_id"
     t.decimal  "amount",       precision: 8, scale: 2
     t.string   "payment_type"
@@ -66,7 +69,7 @@ ActiveRecord::Schema.define(version: 20140420165735) do
     t.datetime "updated_at"
   end
 
-  create_table "sales", force: true do |t|
+  create_table "sales", force: :cascade do |t|
     t.decimal  "amount",           precision: 8, scale: 2
     t.decimal  "total_amount",     precision: 8, scale: 2
     t.decimal  "remaining_amount"
@@ -78,7 +81,7 @@ ActiveRecord::Schema.define(version: 20140420165735) do
     t.datetime "updated_at"
   end
 
-  create_table "store_configurations", force: true do |t|
+  create_table "store_configurations", force: :cascade do |t|
     t.string   "store_name"
     t.text     "store_description"
     t.string   "email_address"
@@ -94,7 +97,7 @@ ActiveRecord::Schema.define(version: 20140420165735) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "username",                 default: "",    null: false
     t.string   "email",                    default: "",    null: false
     t.string   "encrypted_password",       default: "",    null: false
@@ -116,8 +119,8 @@ ActiveRecord::Schema.define(version: 20140420165735) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end
