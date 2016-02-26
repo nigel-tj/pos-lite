@@ -20,12 +20,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'user was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if @user.save
+      flash[:notice] = 'User was successfully created.'
+      redirect_to @user
+    else
+      render action: 'new'
     end
   end
 
@@ -35,12 +34,11 @@ class UsersController < ApplicationController
                      password: params[:user][:password],
                      password_confirmation: params[:user][:password_confirmation])
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'user was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if @user.save
+      flash[:notice] = 'User was successfully created.'
+      redirect_to @user
+    else
+      render action: 'new'
     end
   end
 
@@ -50,23 +48,21 @@ class UsersController < ApplicationController
       user_params.delete('password_confirmation')
     end
 
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'user was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @user.update(user_params)
+      flash[:notice] = 'User was successfully updated.'
+      redirect_to @user
+    else
+      render action: 'edit'
     end
   end
 
   def destroy
     if @user.id == 1
-      redirect_to users_url, notice: "You can't delete the main administrator!"
+      flash[:notice] = "You can't delete the main administrator!"
+      redirect_to users_url
     else
       @user.destroy
-      respond_to do |format|
-        format.html { redirect_to users_url }
-      end
+      redirect_to users_url
     end
   end
 

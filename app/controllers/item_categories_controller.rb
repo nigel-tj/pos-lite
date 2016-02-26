@@ -18,30 +18,26 @@ class ItemCategoriesController < ApplicationController
   def create
     @item_category = ItemCategory.new(item_category_params)
 
-    respond_to do |format|
-      if @item_category.save
-        format.html { redirect_to @item_category, notice: 'Item category was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if @item_category.save
+      flash[:notice] = 'Item category was successfully created.'
+      redirect_to @item_category
+    else
+      render action: 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @item_category.update(item_category_params)
-        format.html { redirect_to @item_category, notice: 'Item category was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @item_category.update(item_category_params)
+      flash[:notice] = 'Item category was successfully updated.'
+      redirect_to @item_category
+    else
+      render action: 'edit'
     end
   end
 
   def destroy
     @item_category.destroy
-    respond_to do |format|
-      format.html { redirect_to item_categories_url }
-    end
+    redirect_to item_categories_url
   end
 
   private
