@@ -2,6 +2,7 @@
 
 PushVendor is an open source point of sale system built with Ruby on Rails and Twitter Bootstrap. This was originally a prototype for a commercial offering that never materialized. I'm in the process of cleaning it up and adding tests. Pull requests welcome.
 
+
 ## Getting Started
 
 ```
@@ -24,9 +25,24 @@ visit: localhost:3000/
 
 Default Credentials: admin, password
 
---------
+
+## Online Demo (May not be current)
 
 Demo Available @ demo.pushvendor.com
+
+
+## Contributing
+
+* Fork it.
+* Create a branch (git checkout -b branch-name)
+* Commit your changes
+* Push to the branch (git push origin branch-name)
+* Create a pull request with description from your branch into develop
+
+
+## Comments
+
+This project is based off of an early prototype that never went into production. It is not suitable for actual deployment in its current state.
 
 --------
 

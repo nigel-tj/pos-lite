@@ -18,30 +18,26 @@ class LineItemsController < ApplicationController
   def create
     @line_item = LineItem.new(line_item_params)
 
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if @line_item.save
+      flash[:notice] = 'Line item was successfully created.'
+      redirect_to @line_item
+    else
+      render action: 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @line_item.update(line_item_params)
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @line_item.update(line_item_params)
+      flash[:notice] = 'Line item was successfully updated.'
+      redirect_to @line_item
+    else
+      render action: 'edit'
     end
   end
 
   def destroy
     @line_item.destroy
-    respond_to do |format|
-      format.html { redirect_to line_items_url }
-    end
+    redirect_to line_items_url
   end
 
   private

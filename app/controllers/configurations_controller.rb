@@ -8,12 +8,11 @@ class ConfigurationsController < ApplicationController
     set_configuration
     authorize! :read, @configuration
 
-    respond_to do |format|
-      if @configuration.update(configuration_params)
-        format.html { redirect_to '/configurations', notice: 'Configurations have been successfully updated.' }
-      else
-        format.html { render controller: 'configurations' }
-      end
+    if @configuration.update(configuration_params)
+      flash[:notice] = 'Configurations have been successfully updated.'
+      redirect_to '/configurations'
+    else
+      render controller: 'configurations'
     end
   end
 

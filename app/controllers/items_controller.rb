@@ -19,22 +19,20 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.published = true
 
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if @item.save
+      flash[:notice] = 'Item was successfully created.'
+      redirect_to @item
+    else
+      render action: 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @item.update(item_params)
+      flash[:notice] = 'Item was successfully updated.'
+      redirect_to @item
+    else
+      render action: 'edit'
     end
   end
 
@@ -42,9 +40,7 @@ class ItemsController < ApplicationController
     @item.published = false
     @item.save
 
-    respond_to do |format|
-      format.html { redirect_to items_url }
-    end
+    redirect_to items_url
   end
 
   def search
