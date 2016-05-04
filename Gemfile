@@ -47,6 +47,7 @@ group :development, :test do
   gem 'database_cleaner', '1.5.1'
   gem 'letter_opener', '1.4.1'
   gem 'capybara', '2.6.2'
+  gem 'sqlite3'
 end
 
 group :development do
