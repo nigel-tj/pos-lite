@@ -12,4 +12,19 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
   end
+
+  factory :sale do
+    amount 15.0
+    total_amount 17.0
+    remaining_amount 0.0
+    discount 0.0
+    tax 0.8
+    customer_id nil
+  end
+
+  factory :payment do
+    sale_id 1
+    amount 15.0
+    payment_type "cash"
+  end
 end
