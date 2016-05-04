@@ -41,4 +41,8 @@ module ApplicationHelper
     end
     url
   end
+
+  def config
+     StoreConfiguration.find(1)
+  end
 end

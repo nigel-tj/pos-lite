@@ -30,6 +30,11 @@ Default Credentials: admin, password
 
 Demo Available @ demo.pushvendor.com
 
+## To-do
+
+* rspec tests for controllers
+
+
 
 ## Contributing
 
