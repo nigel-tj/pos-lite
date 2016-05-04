@@ -19,9 +19,9 @@
 	    		<td><%= sale.id %></td>
           <td><%= sale.created_at.strftime("%m/%d/%y %I:%M:%S %p")  %></td>
           <td><%= sale.customer.blank? ? '-' : sale.customer.last_name %></td>
-          <td><%= number_to_currency sale.total_amount %></td>
-          <td><%= number_to_currency sale.tax %></td>
-          <td><%= number_to_currency sale.paid_total %></td>
+          <td><%= number_to_currency(sale.total_amount, unit: config.currency) %></td>
+          <td><%= number_to_currency(sale.tax, unit: config.currency) %></td>
+          <td><%= number_to_currency(sale.paid_total, unit: config.currency) %></td>
           <td><%= sale.remaining_balance == 0.00 && sale.payments.count > 0 ? "Paid" : "#{number_to_currency sale.remaining_balance}" %></td>
           <td><%= link_to 'Show', edit_sale_path(sale) %> | <%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	    	</tr>
