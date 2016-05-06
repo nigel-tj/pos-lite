@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20160504111756) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.string   "currency"
+    t.string   "currency",                                  default: ""
     t.decimal  "tax_rate",          precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
