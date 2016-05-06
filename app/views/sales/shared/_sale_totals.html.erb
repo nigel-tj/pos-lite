@@ -1,4 +1,4 @@
-<h4 class="text-primary"><span class="glyphicon glyphicon-usd"></span> Sale Totals</h4>
+<h4 class="text-primary"><span class="glyphicon"><%= config.currency %></span> Sale Totals</h4>
 <hr />
 
 <label>Base Price</label>
@@ -8,6 +8,7 @@
 </div>
 
 <label>Discount</label>
+
 <div class="input-group">
   <select id="sale_discount" class="form-control sale-discount">
   	<% 0.step(100, 5) do |disc| %>

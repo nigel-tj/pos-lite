@@ -1,5 +1,5 @@
 <div class="make_payment">
-	<h4 class="text-primary"><span class="glyphicon glyphicon-usd"></span> Add a payment</h4>
+	<h4 class="text-primary"><span class="glyphicon"><%= config.currency %></span> Add a payment</h4>
 	<hr />
 	<%= form_for :payments, :url => url_for(:controller => "payments", :action => "make_payment"), :method => "get", :remote => true do |f| %>
 		<label>Type</label>
