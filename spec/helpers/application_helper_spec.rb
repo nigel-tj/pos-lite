@@ -5,8 +5,8 @@ describe ApplicationHelper do
     @sale = FactoryGirl::create(:sale)
     @payment = FactoryGirl::create(:payment)
   end
-  describe "#title" do
-    it "payment_total" do
+  describe "#payment" do
+    it "returns payment_total" do
       expect(helper.payment_total).to eq 15.0
     end
   end
