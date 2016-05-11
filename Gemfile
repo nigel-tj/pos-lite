@@ -33,7 +33,6 @@ gem 'bootstrap-sass', '3.3.6'
 gem 'will_paginate-bootstrap', '1.0.1'
 
 
-
 group :doc do
   gem 'sdoc', require: false
 end
