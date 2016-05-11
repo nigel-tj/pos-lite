@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 	$(document).on("keypress", '.item_search_input', function(){
 	  $('.item_search').click();
+
 	});
 
 	$(document).on("change", '.item_category_search_input', function(){
@@ -92,5 +93,24 @@ $(document).ready(function(){
 			"custom_customer[email_address]": {email: true }
 		}
 	});
+
+	// creates a line item for a sale
+	var input = $('#search_item_name')[0]
+	var sale_id = parseInt($('#search_sale_id')[0].value)
+	  Awesomplete.$.bind(input, {
+		  "awesomplete-selectcomplete": function(evt) {		  	
+		   $.ajax({
+		      type: "GET",
+		      url: '/sales/create_line_item', //sumbits it to the given url of the form
+		      data: { item_id: parseInt(input.value.split(".|")[0]), quantity: 1, sale_id: sale_id},
+		      dataType: "script",
+		      success: function() {
+		      	// prepare the search box for the new entry
+		      	input.value = "";
+		      	// console.log('line item created');
+		      }
+		    });
+		  }
+		});
 
 });
