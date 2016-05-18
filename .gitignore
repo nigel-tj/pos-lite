@@ -14,6 +14,7 @@ db/*.sqlite3
 *.sassc
 .rvmrc
 latest.dump
+.byebug*
 .rspec
 .redcar/
 .sass-cache
