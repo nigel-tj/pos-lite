@@ -43,6 +43,6 @@ module ApplicationHelper
   end
 
   def config
-     StoreConfiguration.find(1)
+     StoreConfiguration.last
   end
 end
