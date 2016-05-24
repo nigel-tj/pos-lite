@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20140420165735) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.integer  "currency"
+    t.string   "currency"
     t.decimal  "tax_rate",          precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -117,10 +117,9 @@ ActiveRecord::Schema.define(version: 20140420165735) do
     t.boolean  "can_remove_sales",         default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

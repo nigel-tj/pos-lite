@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0.beta3'
+gem 'rails', '5.0.0.rc1'
 gem 'pg'
 
 # -----------------------------------------
@@ -33,7 +33,6 @@ gem 'bootstrap-sass', '3.3.6'
 gem 'will_paginate-bootstrap', '1.0.1'
 
 
-
 group :doc do
   gem 'sdoc', require: false
 end
@@ -47,6 +46,7 @@ group :development, :test do
   gem 'database_cleaner', '1.5.1'
   gem 'letter_opener', '1.4.1'
   gem 'capybara', '2.6.2'
+  gem 'sqlite3'
 end
 
 group :development do

@@ -1,6 +1,6 @@
 class ConfigurationsController < ApplicationController
   def index
-    @configuration = StoreConfiguration.find(1)
+    @configuration = StoreConfiguration.last
     authorize! :read, @configuration
   end
 

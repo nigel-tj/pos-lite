@@ -21,6 +21,12 @@ bundle install
 bundle exec guard
 ```
 
+## Database default data set
+
+```bash
+bundle exec rake pushvendor:load_default_data
+```
+
 visit: localhost:3000/
 
 Default Credentials: admin, password
@@ -29,6 +35,11 @@ Default Credentials: admin, password
 ## Online Demo (May not be current)
 
 Demo Available @ demo.pushvendor.com
+
+## To-do
+
+* rspec tests for controllers
+
 
 
 ## Contributing
