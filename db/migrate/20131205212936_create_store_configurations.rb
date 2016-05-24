@@ -17,6 +17,5 @@ class CreateStoreConfigurations < ActiveRecord::Migration
       t.timestamps
     end
 
-    StoreConfiguration.create(id: 1, currency: "$")
   end
 end
