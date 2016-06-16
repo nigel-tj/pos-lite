@@ -11,10 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140420165735) do
+ActiveRecord::Schema.define(version: 20160606132712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "cube"
+  enable_extension "earthdistance"
 
   create_table "customers", force: :cascade do |t|
     t.string   "first_name"
@@ -28,6 +30,16 @@ ActiveRecord::Schema.define(version: 20140420165735) do
     t.boolean  "published",     default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "halls", force: :cascade do |t|
+    t.string   "name"
+    t.string   "rows"
+    t.integer  "init_seat_num"
+    t.text     "structure"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "item_id"
   end
 
   create_table "item_categories", force: :cascade do |t|
@@ -49,6 +61,8 @@ ActiveRecord::Schema.define(version: 20140420165735) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "item_category_id"
+    t.string   "thumbnail"
+    t.datetime "showtime"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -79,6 +93,16 @@ ActiveRecord::Schema.define(version: 20140420165735) do
     t.text     "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "seats", force: :cascade do |t|
+    t.string   "number"
+    t.string   "location"
+    t.string   "price"
+    t.boolean  "booked"
+    t.integer  "hall_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "store_configurations", force: :cascade do |t|
